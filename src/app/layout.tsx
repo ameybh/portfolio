@@ -61,6 +61,14 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        <div
+          className="z-10 opacity-50 pointer-events-none mix-blend-multiply bg-contain  w-full h-full block fixed "
+          style={{
+            backgroundPosition: "0 0",
+            inset: "0% auto auto 0%",
+            backgroundImage: "url(/texture.webp)",
+          }}
+        />
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
             {children}
