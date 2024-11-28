@@ -26,10 +26,6 @@ function SplineLoginPage() {
     spline.current = splineApp;
   }
 
-  function triggerAnimation() {
-    setShowPassword((prev) => !prev);
-  }
-
   useEffect(() => {
     if (spline.current) {
       console.log("setting as", showPassword);
@@ -39,6 +35,12 @@ function SplineLoginPage() {
       console.log("variables", v);
     }
   }, [showPassword]);
+
+  const handleSubmit = () => {
+    if (spline.current) {
+      spline.current.setVariable("form_complete", true);
+    }
+  };
 
   return (
     <div className="w-full h-full absolute top-0 left-0 gap-10 bg-[#FFF8F1] !font-parkinsans">
@@ -63,12 +65,21 @@ function SplineLoginPage() {
             yOffset={8}
             delay={BLUR_FADE_DELAY}
             className="text-3xl font-bold mb-10 text-center"
-            text="Welcome Back"
+            text="Welcome Back!"
           />
 
-          <form className="space-y-6 w-full px-4">
+          <form
+            className="space-y-6 w-full px-4 text-lg"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
+            }}
+          >
             <div>
-              <label htmlFor="email" className="block text-sm font-medium">
+              <label
+                htmlFor="email"
+                className="block text-base opacity-60 font-medium"
+              >
                 <BlurFadeText
                   yOffset={8}
                   delay={BLUR_FADE_DELAY * 2}
@@ -79,14 +90,18 @@ function SplineLoginPage() {
                 <Input
                   type="email"
                   id="email"
+                  formNoValidate
                   placeholder="you@example.com"
-                  className="mt-1 pointer-events-auto"
+                  className="mt-1 pointer-events-auto text-lg md:text-lg h-14 px-4 rounded-xl"
                 />
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY * 2}>
               <div>
-                <label htmlFor="password" className="block text-sm font-medium">
+                <label
+                  htmlFor="password"
+                  className="block text-base opacity-60 font-medium"
+                >
                   <BlurFadeText
                     yOffset={8}
                     delay={BLUR_FADE_DELAY * 2 + 0.1}
@@ -98,12 +113,13 @@ function SplineLoginPage() {
                     type={showPassword ? "text" : "password"}
                     id="password"
                     placeholder="••••••••"
-                    className="pointer-events-auto"
+                    className="mt-1 pointer-events-auto text-lg md:text-lg h-14 px-4 rounded-xl"
+                    formNoValidate
                   />
                   <button
                     type="button"
                     className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-auto"
-                    onClick={() => setShowPassword(!showPassword)}
+                    onClick={() => setShowPassword((prev) => !prev)}
                   >
                     {showPassword ? (
                       <EyeOff className="h-5 w-5 text-gray-400" />
@@ -125,12 +141,12 @@ function SplineLoginPage() {
                 />
                 <label
                   htmlFor="remember-me"
-                  className="ml-2 block text-xs pointer-events-auto "
+                  className="ml-2 block text-sm pointer-events-auto "
                 >
                   Remember me
                 </label>
               </div>
-              <a href="#" className="text-xs">
+              <a href="#" className="text-sm">
                 Forgot password?
               </a>
             </BlurFade>
@@ -148,6 +164,7 @@ function SplineLoginPage() {
                 <Button
                   variant="outline"
                   className="w-full rounded-full h-14 pointer-events-auto"
+                  onClick={handleSubmit}
                 >
                   <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                     <path
