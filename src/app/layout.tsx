@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 
+import { Analytics } from "@vercel/analytics/next";
+
 import localFont from "next/font/local";
 
 // Font files can be colocated inside of `app`
@@ -85,6 +87,7 @@ export default function RootLayout({
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

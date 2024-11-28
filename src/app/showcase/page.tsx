@@ -30,7 +30,7 @@ const showcaseItems: ShowcaseItem[] = [
     name: "3D Login Form",
     description:
       "A login form where the avatar follows the cursors around the page and looks away when typing password",
-    href: "/showcase/3d-login-form",
+    href: "/showcase/spline-login-form",
     cta: "Learn more",
     className: "col-span-3 lg:col-span-2",
     Icon: BoxIcon,
