@@ -32,7 +32,7 @@ const showcaseItems: ShowcaseItem[] = [
       "A login form where the avatar follows the cursors around the page and looks away when typing password",
     href: "/showcase/spline-login-form",
     cta: "See live!",
-    className: "col-span-3 lg:col-span-2",
+    className: "col-span-4 lg:col-span-2",
     Icon: BoxIcon,
     background: (
       <div className="group-hover:scale-105  transition-all ease-in-out absolute  top-2 origin-top w-full h-full">
@@ -53,7 +53,7 @@ const showcaseItems: ShowcaseItem[] = [
       "A spline scene where you can press the number keys on your keyboard to interact with the scene.",
     href: "/showcase/spline-num-keys",
     cta: "Try it out!",
-    className: "col-span-3 lg:col-span-2",
+    className: "col-span-4 lg:col-span-2",
     Icon: KeyboardIcon,
     background: (
       <div className="group-hover:scale-105  transition-all ease-in-out absolute  top-2 origin-top w-full h-full">
