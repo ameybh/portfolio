@@ -26,6 +26,7 @@ const config = {
           "var(--font-sans)",
           ...fontFamily.sans,
         ],
+        liter: ["var(--font-liter)",  "var(--font-sans)", ...fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -76,10 +77,18 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "wave": {
+          from: { rotate: '0deg' },
+          '25%': { rotate: '5deg' },
+          '50%': { rotate: '0deg' },
+          '75%': { rotate: '-5deg' },
+          to: { rotate: '0deg' },
+        } 
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "wave": "wave 0.6s ease-in-out",
       },
     },
   },

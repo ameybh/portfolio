@@ -10,7 +10,7 @@ export default function ShowcasePage() {
   return (
     <section>
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="font-medium text-2xl mb-8 tracking-tighter">showcase</h1>
+        <h1 className="font-medium text-2xl mb-8 tracking-tight">showcase</h1>
       </BlurFade>
       <BlurFade delay={BLUR_FADE_DELAY * 2}>
         <BentoGrid className="grid-cols-4">

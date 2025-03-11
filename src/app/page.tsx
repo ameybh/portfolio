@@ -6,26 +6,54 @@ import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
+import { ArrowRightIcon, ComponentIcon, NotebookIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
 
+function LinkRenderer(props: any) {
+  // Check if the link is external by seeing if it's absolute and has a different origin
+  const isExternal =
+    props.href.startsWith("http") &&
+    !props.href.startsWith(DATA.url) &&
+    !props.href.startsWith("/");
+
+  return (
+    <a
+      href={props.href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noreferrer" : undefined}
+    >
+      {props.children}
+    </a>
+  );
+}
+
 export default function Page() {
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
-        <div className="mx-auto w-full max-w-2xl space-y-8">
+        <div className="mx-auto w-full max-w-3xl space-y-8">
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
+              <div className="flex items-center flex-wrap gap-3">
+                <BlurFadeText
+                  delay={BLUR_FADE_DELAY}
+                  className="text-3xl font-bold tracking-tight sm:text-5xl xl:text-6xl/none"
+                  yOffset={8}
+                  text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
+                />
+                <BlurFadeText
+                  yOffset={8}
+                  delay={BLUR_FADE_DELAY}
+                  className="text-3xl font-bold tracking-tight sm:text-5xl xl:text-6xl/none  hover:animate-wave"
+                  text="👋"
+                />
+              </div>
               <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
-                yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
-              />
-              <BlurFadeText
-                className="max-w-[600px] md:text-xl"
+                className="max-w-lg md:text-xl"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
@@ -41,10 +69,15 @@ export default function Page() {
       </section>
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-xl font-bold">About</h2>
+          <h2 className="text-2xl font-bold">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+          <Markdown
+            className="prose max-w-full text-pretty font-sans  text-muted-foreground dark:prose-invert"
+            components={{
+              a: LinkRenderer,
+            }}
+          >
             {DATA.summary}
           </Markdown>
         </BlurFade>
@@ -52,7 +85,7 @@ export default function Page() {
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-xl font-bold">Work Experience</h2>
+            <h2 className="text-2xl font-bold">Work Experience</h2>
           </BlurFade>
           {DATA.work.map((work, id) => (
             <BlurFade
@@ -77,7 +110,7 @@ export default function Page() {
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="text-xl font-bold">Education</h2>
+            <h2 className="text-2xl font-bold">Education</h2>
           </BlurFade>
           {DATA.education.map((education, id) => (
             <BlurFade
@@ -100,12 +133,30 @@ export default function Page() {
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills</h2>
+            <h2 className="text-2xl font-bold">Skills</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-2 ">
             {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
+              <BlurFade
+                key={skill.name}
+                delay={BLUR_FADE_DELAY * 10 + id * 0.05}
+              >
+                <Badge
+                  variant="outline"
+                  key={skill.name}
+                  className="flex gap-2 items-center px-2.5 py-1.5 rounded-2xl group text-sm"
+                >
+                  <div className="size-9 flex items-center justify-center">
+                    <Image
+                      src={skill.icon}
+                      alt={skill.name}
+                      width={36}
+                      height={36}
+                    />
+                  </div>
+
+                  {skill.name}
+                </Badge>
               </BlurFade>
             ))}
           </div>
@@ -119,7 +170,7 @@ export default function Page() {
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                   My Projects
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
                   Check out my latest work
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -152,6 +203,60 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <section id="more">
+        <div className="space-y-12 w-full py-12">
+          <BlurFade delay={BLUR_FADE_DELAY * 11}>
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+                  Extras
+                </div>
+                <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
+                  More to see
+                </h2>
+                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Explore some components I&apos;ve built for fun or read my
+                  blog.
+                </p>
+              </div>
+            </div>
+          </BlurFade>
+          <div className="flex flex-col w-full items-center justify-center gap-3">
+            <BlurFade delay={BLUR_FADE_DELAY * 12}>
+              <Link href="/showcase">
+                <Badge
+                  variant="outline"
+                  className="px-3 py-2.5 text-lg rounded-full flex items-center  cursor-pointer group"
+                >
+                  <div className="flex gap-2 items-center">
+                    <ComponentIcon size={24} />
+                    Showcase
+                  </div>
+                  <div className="flex-shrink-0 max-w-0 group-hover:max-w-6 transition-all overflow-hidden">
+                    <ArrowRightIcon size={20} className="pl-1" />
+                  </div>
+                </Badge>
+              </Link>
+            </BlurFade>
+            <BlurFade delay={BLUR_FADE_DELAY * 13}>
+              <Link href="/blog">
+                <Badge
+                  variant="outline"
+                  className="px-3 py-2.5 text-lg rounded-full flex items-center cursor-pointer group"
+                >
+                  <div className="flex gap-2 items-center">
+                    <NotebookIcon size={24} />
+                    Blog
+                  </div>
+                  <div className="flex-shrink-0 max-w-0 group-hover:max-w-6 transition-all overflow-hidden">
+                    <ArrowRightIcon size={20} className="pl-1" />
+                  </div>
+                </Badge>
+              </Link>
+            </BlurFade>
+          </div>
+        </div>
+      </section>
       {/* <section id="hackathons">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
@@ -160,7 +265,7 @@ export default function Page() {
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                   Hackathons
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
                   I like building things
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -202,7 +307,7 @@ export default function Page() {
               <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
                 Contact
               </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-5xl">
                 Get in Touch
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">

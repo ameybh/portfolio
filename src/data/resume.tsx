@@ -10,18 +10,52 @@ export const DATA = {
   description:
     "Software Engineer. I love building things that help people. Hit me up on Twitter.",
   summary:
-    "In 2023, I moved to Bengaluru to build a [video+ai SaaS for a startup](https://tessact.com). In the past, [I pursued a bachelors in computer science](/#education), grew [a small community](https://youtu.be/c4BA3sV98Y4?si=qussCxzyPT0zV_S8&t=802) for teaching web dev and actively competed in [coding competitions](https://www.stopstalk.com/user/profile/bhavsar).",
+    "In 2023, I moved to Bengaluru to build a [video+ai SaaS for a startup](https://tessact.ai). In the past, [I pursued a bachelors in computer science](/#education), grew [a small community](https://youtu.be/c4BA3sV98Y4?si=qussCxzyPT0zV_S8&t=802) for teaching web dev and actively competed in [coding competitions](https://www.stopstalk.com/user/profile/bhavsar).",
   avatarUrl: "/me.jpeg",
   skills: [
-    "React",
-    "Next.js",
-    "Typescript",
-    "Node.js",
-    "PHP",
-    "MySQL",
-    "NLP",
-    "C++",
+    {
+      name: "React",
+      icon: "/skills-icons/react.svg",
+    },
+    {
+      name: "Next.js",
+      icon: "/skills-icons/nextjs.svg",
+    },
+    {
+      name: "Typescript",
+      icon: "/skills-icons/typescript.svg",
+    },
+    {
+      name: "Node.js",
+      icon: "/skills-icons/nodejs.svg",
+    },
+    {
+      name: "PHP",
+      icon: "/skills-icons/php.svg",
+    },
+    {
+      name: "MySQL",
+      icon: "/skills-icons/mysql.svg",
+    },
+    {
+      name: "Python",
+      icon: "/skills-icons/python.svg",
+    },
+    {
+      name: "C++",
+      icon: "/skills-icons/c-plusplus.svg",
+    },
   ],
+  // skills: [
+  //   "React",
+  //   "Next.js",
+  //   "Typescript",
+  //   "Node.js",
+  //   "PHP",
+  //   "MySQL",
+  //   "NLP",
+  //   "C++",
+  // ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/showcase", icon: ComponentIcon, label: "Showcase" },

@@ -47,7 +47,7 @@ function SplineLoginPage() {
     <>
       <div className="flex flex-col w-full h-full lg:hidden justify-end absolute  bottom-1/4 px-6">
         <BlurFade delay={BLUR_FADE_DELAY}>
-          <h1 className="font-medium text-2xl mb-8 tracking-tighter">
+          <h1 className="font-medium text-2xl mb-8 tracking-tight">
             sorry, desktop only
           </h1>
         </BlurFade>

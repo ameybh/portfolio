@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+// import { Inter as FontSans } from "next/font/google";
 
 import { Analytics } from "@vercel/analytics/next";
 
@@ -16,10 +16,18 @@ const myFont = localFont({
   variable: "--font-parkinsans",
   display: "swap",
 });
+
+// const literFont = localFont({
+//   src: "../assets/fonts/Liter-Regular.ttf",
+//   variable: "--font-liter",
+//   display: "swap",
+// });
+
 import "./globals.css";
 
-const fontSans = FontSans({
-  subsets: ["latin"],
+const fontSans = localFont({
+  src: "../assets/fonts/Liter-Regular.ttf",
+  // variable: "--font-liter",
   variable: "--font-sans",
 });
 
@@ -68,8 +76,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6 w-full h-full relative lg:static",
+          "min-h-screen bg-background font-sans antialiased max-w-3xl mx-auto py-12 sm:py-24 px-6 w-full h-full relative lg:static",
           fontSans.variable,
+          // literFont.variable,
           myFont.variable
         )}
       >
