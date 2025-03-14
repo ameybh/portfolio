@@ -6,7 +6,13 @@ import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
-import { ArrowRightIcon, ComponentIcon, NotebookIcon } from "lucide-react";
+import {
+  ArrowRightIcon,
+  ArrowUpRightIcon,
+  ComponentIcon,
+  FileTextIcon,
+  NotebookIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -229,7 +235,7 @@ export default function Page() {
                   className="px-3 py-2.5 text-lg rounded-full flex items-center  cursor-pointer group"
                 >
                   <div className="flex gap-2 items-center">
-                    <ComponentIcon size={24} />
+                    <ComponentIcon size={20} />
                     Showcase
                   </div>
                   <div className="flex-shrink-0 max-w-0 group-hover:max-w-6 transition-all overflow-hidden">
@@ -245,11 +251,27 @@ export default function Page() {
                   className="px-3 py-2.5 text-lg rounded-full flex items-center cursor-pointer group"
                 >
                   <div className="flex gap-2 items-center">
-                    <NotebookIcon size={24} />
+                    <NotebookIcon size={20} />
                     Blog
                   </div>
                   <div className="flex-shrink-0 max-w-0 group-hover:max-w-6 transition-all overflow-hidden">
                     <ArrowRightIcon size={20} className="pl-1" />
+                  </div>
+                </Badge>
+              </Link>
+            </BlurFade>
+            <BlurFade delay={BLUR_FADE_DELAY * 14}>
+              <Link href="/Amey_Bhavsar_SDE_2025.pdf" target="_blank">
+                <Badge
+                  variant="outline"
+                  className="px-3 py-2.5 text-lg rounded-full flex items-center cursor-pointer group"
+                >
+                  <div className="flex gap-2 items-center">
+                    <FileTextIcon size={20} />
+                    Resume
+                  </div>
+                  <div className="flex-shrink-0 max-w-0 group-hover:max-w-6 transition-all overflow-hidden">
+                    <ArrowUpRightIcon size={20} className="pl-1" />
                   </div>
                 </Badge>
               </Link>
