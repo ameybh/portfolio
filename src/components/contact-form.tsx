@@ -160,13 +160,7 @@ export const ContactForm = () => {
           email,
           message: currentMessage,
         };
-        await formHandleSubmit(fieldValues);
-
-        console.log(formState);
-
-        if (!formState.succeeded) {
-          throw new Error("Message failed to send");
-        }
+        formHandleSubmit(fieldValues);
 
         setHistory((prev) => [
           ...prev.slice(0, -1), // Remove the last loading message
