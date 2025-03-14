@@ -357,7 +357,6 @@ export const ContactForm = () => {
                 value={currentInput}
                 onChange={(e) => setCurrentInput(e.target.value)}
                 className="bg-transparent outline-none w-full text-slate-700 dark:text-slate-300"
-                autoFocus
               />
             </div>
           </form>
