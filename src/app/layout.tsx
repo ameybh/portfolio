@@ -5,6 +5,7 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 // import { Inter as FontSans } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 
 import { Analytics } from "@vercel/analytics/next";
 
@@ -22,6 +23,14 @@ const myFont = localFont({
 //   variable: "--font-liter",
 //   display: "swap",
 // });
+
+// Add JetBrains Mono font
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 import "./globals.css";
 
@@ -79,7 +88,8 @@ export default function RootLayout({
           "min-h-screen bg-background font-sans antialiased max-w-3xl mx-auto py-12 sm:py-24 px-6 w-full h-full relative lg:static",
           fontSans.variable,
           // literFont.variable,
-          myFont.variable
+          myFont.variable,
+          jetbrainsMono.variable
         )}
       >
         {/* <div

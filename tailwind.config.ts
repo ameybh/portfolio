@@ -27,6 +27,7 @@ const config = {
           ...fontFamily.sans,
         ],
         liter: ["var(--font-liter)",  "var(--font-sans)", ...fontFamily.sans],
+        mono: ["var(--font-mono)", ...fontFamily.mono],
       },
       colors: {
         border: "hsl(var(--border))",
